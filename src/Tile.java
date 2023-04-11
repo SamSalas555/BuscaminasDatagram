@@ -3,6 +3,8 @@ public class Tile {
     private int posCol;
     private boolean mina;
 
+    private int numMines;
+
     public Tile(int posRow, int posCol) {
         this.posRow = posRow;
         this.posCol = posCol;
@@ -30,5 +32,13 @@ public class Tile {
 
     public void setMina(boolean mina) {
         this.mina = mina;
+    }
+
+    public int getNumMines() {
+        return numMines;
+    }
+
+    public void incNumMines() {
+        this.numMines++;
     }
 }

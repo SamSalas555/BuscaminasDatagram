@@ -23,6 +23,7 @@ public class Board {
             }
         }
         generateMines();
+        generateClues();
     }
 
     private void generateMines(){
@@ -37,11 +38,42 @@ public class Board {
             }
         }
     }
-
+    private List<Tile> getTileArround(Tile tile){
+        List<Tile> tilesArround = new ArrayList<Tile>();
+        for (int i = 0; i<8 ; i++){
+            int tmpPosRow = tile.getPosRow();
+            int tmpPosCol = tile.getPosCol();
+            switch (i){
+                case 0: tmpPosRow--;break;
+                case 1: tmpPosRow--;tmpPosCol++;break;
+                case 2: tmpPosCol++;break;
+                case 3: tmpPosRow++;tmpPosCol++;break;
+                case 4: tmpPosRow++;break;
+                case 5: tmpPosRow++;tmpPosCol--;break;
+                case 6: tmpPosCol--;break;
+                case 7: tmpPosRow--;tmpPosCol--;break;
+            }
+            if (tmpPosRow>=0 && tmpPosRow<this.tiles.length
+            &&tmpPosCol>=0 && tmpPosCol<this.tiles[0].length){
+                tilesArround.add(this.tiles[tmpPosRow][tmpPosCol]);
+            }
+        }
+        return tilesArround;
+    }
+    private void generateClues(){
+        for(Tile tile : tileMined){
+            System.out.println(getTileArround(tile));
+            for(Tile tileS : getTileArround(tile)){
+                System.out.println("(" +tileS.getPosRow()+","+tileS.getPosCol()+")");
+                tiles[tileS.getPosRow()][tileS.getPosCol()].incNumMines();
+                System.out.println(tiles[tileS.getPosRow()][tileS.getPosCol()].getNumMines());
+            }
+        }
+    }
     private void printBoardCmd(){
         for (Tile[] tile : tiles) {
             for (Tile value : tile) {
-                System.out.print(value.isMina() ? "*" : "#");
+                System.out.print(value.isMina() ? "*" : value.getNumMines()>0?value.getNumMines():"-");
             }
             System.out.println("");
         }
