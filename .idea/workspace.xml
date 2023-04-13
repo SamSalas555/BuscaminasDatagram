@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0d7bb0-3d9c-408f-9473-b9559d6e346f" name="Changes" comment="Generacion del tablero en consola, y de una lista con la&#10;posicion de las minas y las pistas">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+    <list default="true" id="4f0d7bb0-3d9c-408f-9473-b9559d6e346f" name="Changes" comment="Generacion de tablero GUI Funcional">
+      <change afterPath="$PROJECT_DIR$/src/Servidor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuscaminasDatagram.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BuscaminasDatagram.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cliente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2OGAS3Ge65uB3CJ5hbYrONH4sLs" />
@@ -41,7 +44,7 @@
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "196",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "20",
-    "last_opened_file_path": "C:/Users/Samuel/AppData/Local/JetBrains/IntelliJ IDEA Community Edition 2023.1/lib/forms_rt.jar",
+    "last_opened_file_path": "C:/Users/Samuel/IdeaProjects/DatagramaECO",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -78,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681248112811</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Generacion de tablero GUI Funcional">
+      <created>1681273650021</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681273650021</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -96,7 +106,8 @@
     <MESSAGE value="Inicializacion del repositoriò" />
     <MESSAGE value="Generacion del tablero en consola, y de una lista con la posicion de las minas" />
     <MESSAGE value="Generacion del tablero en consola, y de una lista con la&#10;posicion de las minas y las pistas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Generacion del tablero en consola, y de una lista con la&#10;posicion de las minas y las pistas" />
+    <MESSAGE value="Generacion de tablero GUI Funcional" />
+    <option name="LAST_COMMIT_MESSAGE" value="Generacion de tablero GUI Funcional" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

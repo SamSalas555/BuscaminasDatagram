@@ -1,4 +1,6 @@
-public class Tile {
+import java.io.Serializable;
+
+public class Tile implements Serializable {
     private int posRow;
     private int posCol;
     private boolean mina;

@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board {
+public class Board implements Serializable {
     Tile [][] tiles;
     int numRow;
     int numCol;
@@ -70,7 +71,7 @@ public class Board {
             }
         }
     }
-    private void printBoardCmd(){
+    public void printBoardCmd(){
         for (Tile[] tile : tiles) {
             for (Tile value : tile) {
                 System.out.print(value.isMina() ? "*" : value.getNumMines()>0?value.getNumMines():"-");
@@ -79,12 +80,4 @@ public class Board {
         }
     }
 
-    public static void main(String[] args){
-        Board testBoard = new Board(9,9,10);
-        testBoard.printBoardCmd();
-        for (Tile tile : testBoard.tileMined) {
-            System.out.print("(" +tile.getPosRow() +","+ tile.getPosCol()+")" + tile.isMina());
-        }
-
-    }
 }
