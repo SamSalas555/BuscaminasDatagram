@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Board implements Serializable {
     Tile [][] tiles;
@@ -8,6 +9,7 @@ public class Board implements Serializable {
     int numCol;
     int numMines;
     List<Tile> tileMined = new ArrayList<Tile>();
+    private Consumer<List<Tile>> eventLostGame;
 
     public Board(int numRow, int numCol, int numMines) {
         this.numRow = numRow;
@@ -71,6 +73,12 @@ public class Board implements Serializable {
             }
         }
     }
+    public void selectTile(int posRow, int posCol){
+        if(this.tiles[posRow][posCol].isMina()){
+            getEventLostGame().accept(tileMined);
+        }
+    }
+
     public void printBoardCmd(){
         for (Tile[] tile : tiles) {
             for (Tile value : tile) {
@@ -80,4 +88,11 @@ public class Board implements Serializable {
         }
     }
 
+    public Consumer<List<Tile>> getEventLostGame() {
+        return eventLostGame;
+    }
+
+    public void setEventLostGame(Consumer<List<Tile>> eventLostGame) {
+        this.eventLostGame = eventLostGame;
+    }
 }

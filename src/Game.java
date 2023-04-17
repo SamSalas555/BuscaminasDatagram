@@ -6,7 +6,10 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.EventListener;
+import java.util.List;
+import java.util.function.Consumer;
 
 public class Game extends JFrame implements EventListener {
     private JPanel wprin;
@@ -15,32 +18,74 @@ public class Game extends JFrame implements EventListener {
     private JComboBox comboBox1;
     private JButton jugarButton;
     private JPanel Board;
-
     JButton[][] buttonsBoard;
+    Board gameBoard;
 
     public Game() {
         super("Buscaminas");
         Board.setLayout(null);
         setContentPane(wprin);
+
+        conectarseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    tryConnection(e);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
         jugarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                startGame(e);
+                try {
+                    startGame(e);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
 
-    private void startGame(ActionEvent e) {
+    private void tryConnection(ActionEvent e) throws IOException, ClassNotFoundException {
+        Cliente.initConecct();
+    }
+
+    private void startGame(ActionEvent e) throws IOException, ClassNotFoundException {
         Board.removeAll();
         if (comboBox1.getSelectedItem().toString() == "Facil") {
             GenerateBoard(9, 9);
-        }
-        else if (comboBox1.getSelectedItem().toString() == "Intermedio") {
+            createBoardB();
+            gameBoard.printBoardCmd();
+        } else if (comboBox1.getSelectedItem().toString() == "Intermedio") {
             GenerateBoard(16, 16);
+            createBoardB();
+            gameBoard.printBoardCmd();
         } else {
             GenerateBoard(16, 30);
+            createBoardB();
+            gameBoard.printBoardCmd();
         }
+
         Board.updateUI();
+    }
+
+    private void createBoardB() throws IOException, ClassNotFoundException {
+        gameBoard = Cliente.getBoard();
+        gameBoard.printBoardCmd();
+        gameBoard.setEventLostGame(new Consumer<List<Tile>>() {
+            @Override
+            public void accept(List<Tile> tiles) {
+                for (Tile tileMined : tiles) {
+                    buttonsBoard[tileMined.getPosRow()][tileMined.getPosCol()].setText("X");
+                }
+            }
+        });
     }
 
     public void GenerateBoard(int numRow, int numCol) {
@@ -77,6 +122,7 @@ public class Game extends JFrame implements EventListener {
         int posRow = Integer.parseInt(cordenada[0]);
         int posCol = Integer.parseInt(cordenada[1]);
         JOptionPane.showMessageDialog(rootPane, posRow + "," + posCol);
+        gameBoard.selectTile(posRow, posCol);
     }
 
     {
