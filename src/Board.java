@@ -74,8 +74,17 @@ public class Board implements Serializable {
         }
     }
     public void selectTile(int posRow, int posCol){
+        eventTileOpenned.accept(this.tiles[posRow][posCol]);
         if(this.tiles[posRow][posCol].isMina()){
             getEventLostGame().accept(tileMined);
+        } else if (this.tiles[posRow][posCol].getNumMines() == 0) {
+            List<Tile> tilesArround = getTileArround(this.tiles[posRow][posCol]);
+            for (Tile tile: tilesArround){
+                if(!tile.isOpened()){
+                    tile.setOpened(true);
+                    selectTile(tile.getPosRow(),tile.getPosCol());
+                }
+            }
         }
     }
 
@@ -92,7 +101,17 @@ public class Board implements Serializable {
         return eventLostGame;
     }
 
+    private Consumer<Tile> eventTileOpenned;
+
     public void setEventLostGame(Consumer<List<Tile>> eventLostGame) {
         this.eventLostGame = eventLostGame;
+    }
+
+    public Consumer<Tile> getEventTileOpenned() {
+        return eventTileOpenned;
+    }
+
+    public void setEventTileOpenned(Consumer<Tile> eventTileOpenned) {
+        this.eventTileOpenned = eventTileOpenned;
     }
 }

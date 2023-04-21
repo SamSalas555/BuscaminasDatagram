@@ -7,6 +7,8 @@ public class Tile implements Serializable {
 
     private int numMines;
 
+    private boolean opened;
+
     public Tile(int posRow, int posCol) {
         this.posRow = posRow;
         this.posCol = posCol;
@@ -42,5 +44,13 @@ public class Tile implements Serializable {
 
     public void incNumMines() {
         this.numMines++;
+    }
+
+    public boolean isOpened() {
+        return opened;
+    }
+
+    public void setOpened(boolean opened) {
+        this.opened = opened;
     }
 }

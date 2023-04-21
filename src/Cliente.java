@@ -30,11 +30,12 @@ public class Cliente {
         b1.printBoardCmd();
     }
 
-    public static Board getBoard() throws IOException, ClassNotFoundException {
+    public static Board getBoard(String level) throws IOException, ClassNotFoundException {
         Socket cliente= new Socket("localhost",3000);
         System.out.println("Conexion con el servidor exitosa");
         setOutputStreamGame(new ObjectOutputStream(cliente.getOutputStream()));
         setInputStreamGame(new ObjectInputStream(cliente.getInputStream()));
+        getOutputStreamGame().writeObject(level);
         getOutputStreamGame().flush();
         return (Board) getInputStreamGame().readObject();
     }

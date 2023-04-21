@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0d7bb0-3d9c-408f-9473-b9559d6e346f" name="Changes" comment="Conexion funcional cliente servidor">
+    <list default="true" id="4f0d7bb0-3d9c-408f-9473-b9559d6e346f" name="Changes" comment="Juego funcionando">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Servidor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +46,7 @@
     &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;196&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;20&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Samuel/IdeaProjects/DatagramaECO&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Samuel/IdeaProjects/DriveJava&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -89,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681273650021</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Juego funcionando">
+      <created>1681695120185</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681695120185</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -108,7 +116,8 @@
     <MESSAGE value="Generacion del tablero en consola, y de una lista con la posicion de las minas" />
     <MESSAGE value="Generacion del tablero en consola, y de una lista con la&#10;posicion de las minas y las pistas" />
     <MESSAGE value="Generacion de tablero GUI Funcional" />
-    <option name="LAST_COMMIT_MESSAGE" value="Generacion de tablero GUI Funcional" />
+    <MESSAGE value="Juego funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="Juego funcionando" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
