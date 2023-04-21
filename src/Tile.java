@@ -1,9 +1,13 @@
-public class Tile {
+import java.io.Serializable;
+
+public class Tile implements Serializable {
     private int posRow;
     private int posCol;
     private boolean mina;
 
     private int numMines;
+
+    private boolean opened;
 
     public Tile(int posRow, int posCol) {
         this.posRow = posRow;
@@ -40,5 +44,13 @@ public class Tile {
 
     public void incNumMines() {
         this.numMines++;
+    }
+
+    public boolean isOpened() {
+        return opened;
+    }
+
+    public void setOpened(boolean opened) {
+        this.opened = opened;
     }
 }

@@ -1,12 +1,15 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class Board {
+public class Board implements Serializable {
     Tile [][] tiles;
     int numRow;
     int numCol;
     int numMines;
     List<Tile> tileMined = new ArrayList<Tile>();
+    private Consumer<List<Tile>> eventLostGame;
 
     public Board(int numRow, int numCol, int numMines) {
         this.numRow = numRow;
@@ -70,7 +73,22 @@ public class Board {
             }
         }
     }
-    private void printBoardCmd(){
+    public void selectTile(int posRow, int posCol){
+        eventTileOpenned.accept(this.tiles[posRow][posCol]);
+        if(this.tiles[posRow][posCol].isMina()){
+            getEventLostGame().accept(tileMined);
+        } else if (this.tiles[posRow][posCol].getNumMines() == 0) {
+            List<Tile> tilesArround = getTileArround(this.tiles[posRow][posCol]);
+            for (Tile tile: tilesArround){
+                if(!tile.isOpened()){
+                    tile.setOpened(true);
+                    selectTile(tile.getPosRow(),tile.getPosCol());
+                }
+            }
+        }
+    }
+
+    public void printBoardCmd(){
         for (Tile[] tile : tiles) {
             for (Tile value : tile) {
                 System.out.print(value.isMina() ? "*" : value.getNumMines()>0?value.getNumMines():"-");
@@ -79,12 +97,21 @@ public class Board {
         }
     }
 
-    public static void main(String[] args){
-        Board testBoard = new Board(9,9,10);
-        testBoard.printBoardCmd();
-        for (Tile tile : testBoard.tileMined) {
-            System.out.print("(" +tile.getPosRow() +","+ tile.getPosCol()+")" + tile.isMina());
-        }
+    public Consumer<List<Tile>> getEventLostGame() {
+        return eventLostGame;
+    }
 
+    private Consumer<Tile> eventTileOpenned;
+
+    public void setEventLostGame(Consumer<List<Tile>> eventLostGame) {
+        this.eventLostGame = eventLostGame;
+    }
+
+    public Consumer<Tile> getEventTileOpenned() {
+        return eventTileOpenned;
+    }
+
+    public void setEventTileOpenned(Consumer<Tile> eventTileOpenned) {
+        this.eventTileOpenned = eventTileOpenned;
     }
 }
